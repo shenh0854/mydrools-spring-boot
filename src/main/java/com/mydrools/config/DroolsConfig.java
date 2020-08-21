@@ -1,4 +1,11 @@
 package com.mydrools.config;
+
+/**
+ * @author Steve Shen
+ * @version 1.0.0
+ * @date 2020/8/21 17:38
+ */
+
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
@@ -21,7 +28,7 @@ import java.io.IOException;
 @Configuration
 public class DroolsConfig {
     //指定规则文件存放的目录
-    private static final String RULES_PATH = "..rules/";
+    private static final String RULES_PATH = "rules/";
     private final KieServices kieServices = KieServices.Factory.get();
     @Bean
     @ConditionalOnMissingBean

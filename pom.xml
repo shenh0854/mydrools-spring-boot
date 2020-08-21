@@ -61,6 +61,11 @@
             <version>7.41.0.Final</version>
         </dependency>
         <dependency>
+            <groupId>org.kie.server</groupId>
+            <artifactId>kie-server-client</artifactId>
+            <version>7.41.0.Final</version>
+        </dependency>
+        <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-spring</artifactId>
             <exclusions>
