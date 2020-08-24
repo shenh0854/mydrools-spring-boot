@@ -33,6 +33,7 @@ public class DroolsConfig {
     @Bean
     @ConditionalOnMissingBean
     public KieFileSystem kieFileSystem() throws IOException {
+        System.setProperty("drools.dateformat","yyyy-MM-dd");
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         ResourcePatternResolver resourcePatternResolver =
                 new PathMatchingResourcePatternResolver();
