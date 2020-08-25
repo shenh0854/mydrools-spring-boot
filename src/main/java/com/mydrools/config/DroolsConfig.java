@@ -29,11 +29,13 @@ import java.io.IOException;
 public class DroolsConfig {
     //指定规则文件存放的目录
     private static final String RULES_PATH = "rules/";
+    // KieServices是一个线程安全的单例，充当一个中心，允许访问提供Kie服务
     private final KieServices kieServices = KieServices.Factory.get();
     @Bean
     @ConditionalOnMissingBean
     public KieFileSystem kieFileSystem() throws IOException {
         System.setProperty("drools.dateformat","yyyy-MM-dd");
+        // KieFileSystem Kie文件系统
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         ResourcePatternResolver resourcePatternResolver =
                 new PathMatchingResourcePatternResolver();
@@ -49,9 +51,13 @@ public class DroolsConfig {
     @Bean
     @ConditionalOnMissingBean
     public KieContainer kieContainer() throws IOException {
+        // KieRepository是一个知识库，用于储存KieModules
         KieRepository kieRepository = kieServices.getRepository();
         kieRepository.addKieModule(kieRepository::getDefaultReleaseId);
+        // KieBuilder是为KieModules创建KieBase的创建器
+        // KieModule是定义一组KieBase所需的所有资源的容器
         KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem());
+        // 按照KieFileSystem 创建KieBase
         kieBuilder.buildAll();
         return kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
     }
