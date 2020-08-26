@@ -34,6 +34,7 @@ public class DroolsConfig {
     @Bean
     @ConditionalOnMissingBean
     public KieFileSystem kieFileSystem() throws IOException {
+        // 此处设置日期格式是为了drl文件中date-effective属性的执行
         System.setProperty("drools.dateformat","yyyy-MM-dd");
         // KieFileSystem Kie文件系统
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
