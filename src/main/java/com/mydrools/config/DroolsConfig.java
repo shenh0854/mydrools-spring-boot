@@ -42,6 +42,7 @@ public class DroolsConfig {
                 new PathMatchingResourcePatternResolver();
         Resource[] files =
                 resourcePatternResolver.getResources("classpath*:" + RULES_PATH + "*.*");
+        System.out.println(files);
         String path = null;
         for (Resource file : files) {
             path = RULES_PATH + file.getFilename();

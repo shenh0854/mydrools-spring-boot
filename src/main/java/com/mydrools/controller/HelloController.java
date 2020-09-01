@@ -6,9 +6,11 @@ package com.mydrools.controller;
  * @date 2020/8/21 17:38
  */
 
+import com.mydrools.entity.CreditCardApplyInfo;
 import com.mydrools.service.RuleService;
 import com.mydrools.entity.Calculation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +38,12 @@ public class HelloController {
         calculation = ruleService.calculate(calculation);
         System.out.println(calculation);
         return calculation;
+    }
+
+    @RequestMapping("/creditCardApply")
+    public CreditCardApplyInfo creditCardApply(@RequestBody CreditCardApplyInfo creditCardApplyInfo){
+        creditCardApplyInfo = ruleService.creditCardApply(creditCardApplyInfo);
+        return creditCardApplyInfo;
     }
 }
 

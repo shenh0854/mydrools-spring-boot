@@ -7,6 +7,7 @@ package com.mydrools.service;
  */
 
 import com.mydrools.entity.Calculation;
+import com.mydrools.entity.CreditCardApplyInfo;
 import org.kie.api.KieBase;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,14 @@ public class RuleService {
         session.fireAllRules();
         session.dispose();
         return calculation;
+    }
+
+    //调用Drools规则引擎实现信用卡申请
+    public CreditCardApplyInfo creditCardApply(CreditCardApplyInfo creditCardApplyInfo){
+        KieSession session = kieBase.newKieSession();
+        session.insert(creditCardApplyInfo);
+        session.fireAllRules();
+        session.dispose();
+        return creditCardApplyInfo;
     }
 }
